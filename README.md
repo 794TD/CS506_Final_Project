@@ -49,10 +49,10 @@ We have identified three distinct data sources and the specific methods to integ
 ![Variance Plot](images/eda_variance.png)
 *Figure 2: Boxplots reveal massive variance. While median times are low, the "long tail" of neglected cases extends for months.*
 
-### The Structural Break
+### The Structural Break TODO
 ![Structural Break]
 
-## 5. Project Roadmap & Timeline (Rubric: 10 pts)
+## 5. Project Roadmap & Timeline
 We have structured the project to fit the 8-week semester timeline, with built-in buffers for contingencies.
 
 * **Week 1-2: Data Engineering (Current Phase)**
