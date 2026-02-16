@@ -26,7 +26,7 @@ Our goals are specific, measurable, and technically rigorous:
 * **Measurable Metric:** Train a Logistic Regression/Decision Tree classifier.
 * **Success Criteria:** Achieve >75% Recall on the test set for the "Overdue" class (prioritizing recall to minimize missed neglected cases).
 
-## 3. Data Collection Plan (Rubric: 10 pts)
+## 3. Data Collection Plan
 We have identified three distinct data sources and the specific methods to integrate them.
 ### Data Sources:
 311 Service Requests: https://data.boston.gov/dataset/311-service-requests
