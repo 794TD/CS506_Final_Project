@@ -17,18 +17,22 @@ This project moves beyond descriptive statistics to perform a **root-cause analy
 ## 2. Project Goals 
 Our goals are specific, measurable, and technically rigorous:
 
-### Primary Goal: Quantify Equity (The $\beta$ Coefficient)
-* **Objective:** Determine if neighborhood socioeconomic status (SVI) is a statistically significant predictor of service resolution time.
-* **Measurable Metric:** We will quantify the regression coefficient ($\beta$) of the **CDC Social Vulnerability Index** on **Duration (Days)**, controlling for seasonality and request source.
-* **Success Criteria:** A p-value < 0.05 for the SVI coefficient in our OLS model.
-
+### Primary Goal: Quantify Equity & Decompose Drivers (**EDITED**)
+* **Objective:** Determine if neighborhood socioeconomic status is a statistically significant predictor of service resolution time.
+* **Refined Approach:** Instead of relying solely on the aggregate **Social Vulnerability Index (SVI)** score (which may mask specific drivers), we will **decompose the index** into its underlying census variables.
+* **Measurable Metric:** We will quantify the regression coefficients ($\beta$) for specific factors—such as **Vehicle Access** (`EP_NOVEH`) and **English Proficiency** (`EP_LIMENG`)—to identify precisely *which* aspects of vulnerability correlate most strongly with service delays.
 ### Secondary Goal: Predict Anomalies (The Classifier)
 * **Objective:** Build an "Early Warning System" to identify tickets at risk of becoming "Long-Tail" outliers (overdue by >30 days).
 * **Measurable Metric:** Train a Logistic Regression/Decision Tree classifier.
 * **Success Criteria:** Achieve >75% Recall on the test set for the "Overdue" class (prioritizing recall to minimize missed neglected cases).
 
-## 3. Data Collection Plan (Rubric: 10 pts)
+## 3. Data Collection Plan
 We have identified three distinct data sources and the specific methods to integrate them.
+### Data Sources:
+311 Service Requests: https://data.boston.gov/dataset/311-service-requests
+Suppliment Datasets: https://data.boston.gov/dataset/
+CDC SVI datasets: https://www.atsdr.cdc.gov/place-health/php/svi/svi-data-documentation-download.html
+Income and Social Status API: https://www.bls.gov/developers/home.htm
 
 | Data Layer | Source | Collection Method | Key Features |
 | :--- | :--- | :--- | :--- |
@@ -37,6 +41,13 @@ We have identified three distinct data sources and the specific methods to integ
 | **Civic** | **Boston Voter Files** | **Aggregation:** Aggregating voting history by Ward/Precinct. | `Voter_Turnout_Pct`, `Registered_Voters` |
 
 ---
+* **Census Bureau (SVI Data):** * **Source:** CDC/ATSDR Social Vulnerability Index (2012-2012).
+    * **Granularity:** ZCTA (Zip Code Tabulation Area) level, joined with 311 data via `zipcode`.
+    * **Selected Features (Decomposed):** To avoid information loss from the composite score, we utilize specific ACS variables provided in the SVI dataset:
+        * **Socioeconomic Status:** Poverty Rate (`EP_POV150`), Unemployment (`EP_UNEMP`).
+        * **Housing & Transportation:** No Vehicle Access (`EP_NOVEH`), Crowded Housing (`EP_CROWD`).
+        * **Minority & Language:** Minority Status (`EP_MINRTY`), Limited English Proficiency (`EP_LIMENG`).
+        * **Household Composition:** Single Parent Households (`EP_SNGPNT`), Disability (`EP_DISABL`).
 
 ## 4. Preliminary Analysis 
 *See `notebooks/eda.ipynb` for full code.*
