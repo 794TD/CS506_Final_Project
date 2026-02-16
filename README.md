@@ -29,6 +29,11 @@ Our goals are specific, measurable, and technically rigorous:
 
 ## 3. Data Collection Plan (Rubric: 10 pts)
 We have identified three distinct data sources and the specific methods to integrate them.
+### Data Sources:
+311 Service Requests: https://data.boston.gov/dataset/311-service-requests
+Suppliment Datasets: https://data.boston.gov/dataset/
+CDC SVI datasets: https://www.atsdr.cdc.gov/place-health/php/svi/svi-data-documentation-download.html
+Income and Social Status API: https://www.bls.gov/developers/home.htm
 
 | Data Layer | Source | Collection Method | Key Features |
 | :--- | :--- | :--- | :--- |
