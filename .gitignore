@@ -8,3 +8,4 @@ data/
 problemstic/data/shapefiles/
 problemstic/models/
 problemstic/Archive.zip
+.DS_Store
